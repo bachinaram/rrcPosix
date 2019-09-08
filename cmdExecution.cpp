@@ -15,6 +15,8 @@ we need to set wait(0) at parent for graceful termination of child process
 
 void cmdExecFuntion(string incommingCommd){
 
+
+
 	char* cmdArg[50];
 	//converting the method string to char array
 	char chrString[incommingCommd.length()];
@@ -34,7 +36,7 @@ void cmdExecFuntion(string incommingCommd){
 
 	}
 
-	//we really need to keep the last element in cmdAr as Nul les args doesn't work
+	//we really need to keep the last element in cmdAr as Null es args doesn't work
 	cmdArg[i]=NULL;
 	//cout << cmdArg[1]<<endl;
 

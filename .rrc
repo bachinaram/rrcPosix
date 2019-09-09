@@ -1,3 +1,7 @@
-HOSTNAME=indl72033
-PATH=/scratch/Eclipse/rrcPosix
+HOME=/scratch/
+HOSTNAME=slc14xzg
+HOSTNAME=3456
+USERS=unknown
 USER=RAM
+myName=yourname
+HISTSIZE=40

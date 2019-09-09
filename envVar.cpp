@@ -43,6 +43,7 @@ void addNewVariable(string newVariable){
 	ofstream envFile;
 	envFile.open(".rrc",ios::in|ios::out|ios::app);
 	envFile << newVariable <<endl;
+	//cout<< newVariable;
 	envFile.close();
 }
 
@@ -53,11 +54,10 @@ string removeExport(string initCommand,string settingStr){
 	return initCommand;
 }
 
-
-
 int searchStr(string searchString){
 	ifstream envFile;
 	string eachLine;
+	int ll;
 	envFile.open(".rrc");
 	if(!envFile){
 		cout << "something wrong with file, check if the file exist" << endl;
@@ -70,14 +70,13 @@ int searchStr(string searchString){
       pos=eachLine.find(searchString);
       if(pos!=string::npos)
         {
-            return 0;
-            break;
+    	  	ll=0;
+    	  	cout<<"hi0";
+    	  	break;
         }
-      else{
-    	  return 1;
       }
-  }
-
+	envFile.close();
+	return ll;
 }
 
 
@@ -105,12 +104,15 @@ int updateOldVariable(string oldString,string newString){
 	            size_t pos = eachLine.find(oldString);
 	            if (pos != string::npos)
 	                eachLine.replace(pos, oldStrLen, newString);
+
 	            else
 	                break;
 	        }
 
 	        envFileTmp << eachLine << endl;
 	    }
+	envFile.close();
+	envFileTmp.close();
 	rename(".rrc_temp",".rrc");
 	return 0;
 }

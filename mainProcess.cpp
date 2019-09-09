@@ -38,26 +38,28 @@ void inputArgs(){
 
 		size_t lineSecondPlace= setCommand.find(setter);
 		setCommand.erase(lineSecondPlace, setCommand.length()+1);
-		cout << setCommand;
+		//cout << setCommand;
 		string setVariable = setCommand+setter;
 		string searchString = setVariable;
 
 		int searchResult = searchStr(searchString);
-		cout << searchResult;
+		//cout << searchResult<<endl;
 		if(searchResult == 0){
-
-			addNewVariable(wholeCommand);
-		}
-		else{
-			cout << setVariable;
+			//cout << setVariable;
 			string oldString = readEnvFile(setVariable);
 			size_t lineThirdTime= wholeCommand.find(setter);
-			cout << lineThirdTime;
-			cout << wholeCommand.length();
+			//cout << lineThirdTime;
+			//cout << wholeCommand.length();
 			wholeCommand.erase(0, lineThirdTime+1);
 			string newString =wholeCommand;
 			int retint = updateOldVariable(oldString,newString);
-			cout << retint <<endl;
+			//cout << retint <<endl;
+
+		}
+		else{
+			//cout<<wholeCommand<<endl;
+			addNewVariable(wholeCommand);
+
 
 		}
 		setPromptString();

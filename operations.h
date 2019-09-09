@@ -13,3 +13,4 @@ string removeExport(string initCommand,string settingStr);
 int searchStr(string searchString);
 int updateOldVariable(string oldString,string newString);
 void aliasCheck(string aliasExclusionCommad);
+void pipeCmdExecution(string incommingCommd);

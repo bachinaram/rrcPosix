@@ -15,23 +15,24 @@ we need to set wait(0) at parent for graceful termination of child process
 
 void cmdExecFuntion(string incommingCommd){
 
-
-
-	char* cmdArg[50];
+    string piperr = "|";
+    size_t found = incommingCommd.find(piperr);
+     if (found != string::npos){
+    	pipeCmdExecution(incommingCommd);
+     }
+     else{
+    	 string token1=incommingCommd;
+    	char* chrString1 = const_cast<char*> (token1.c_str());
+        char* cmdArg[token1.length()];
 	//converting the method string to char array
-	char chrString[incommingCommd.length()];
-	for(int i=0;i<sizeof(chrString);i++){
-		chrString[i] = incommingCommd[i];
-	}
-
 
 	//converted char array is passed to strtok
-	char* token=strtok(chrString," ");
+	char* tk1=strtok(chrString1," ");
 	int i=0;
-	while (token != NULL) {
-		cmdArg[i]=token;
+	while (tk1 != NULL) {
+		cmdArg[i]=tk1;
 		//cout << token <<endl;
-		token = strtok(NULL, " ");
+		tk1 = strtok(NULL, " ");
 		i++;
 
 	}
@@ -55,4 +56,5 @@ void cmdExecFuntion(string incommingCommd){
 	else{
 		cout << "error at process id creation - forking(issue)" << endl;
 	}
+     }
 }

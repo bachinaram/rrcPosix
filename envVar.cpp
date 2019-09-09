@@ -71,7 +71,7 @@ int searchStr(string searchString){
       if(pos!=string::npos)
         {
     	  	ll=0;
-    	  	cout<<"hi0";
+    	  	//cout<<"hi0";
     	  	break;
         }
       }

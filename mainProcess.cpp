@@ -21,6 +21,7 @@ void inputArgs(){
 	const string historyStr= "history";
 	const string settingStr= "export ";
 	const string setter="=";
+	const string aliasStr= "alias ";
 	string eachLine;
 	//cin >> initialCommand; I cannot use the cin because it is not taking spaces from input
 	getline(cin,initialCommand);
@@ -64,28 +65,32 @@ void inputArgs(){
 		}
 		setPromptString();
 	}
+	else if(initialCommand.find(aliasStr) != string::npos){
+		//adding a alias to environment
+		string setCommand =  removeExport(initialCommand,aliasStr);
+		string aliaCommand=setCommand;
+		//cout << aliaCommand;
+		addNewVariable(aliaCommand);
+		setPromptString();
+	}
 	else{
 		//below code check for the given command in /bin and /usr/bin dir and calls methods in commandoperations.cpp
-		string path1 = "/bin/";
-		string fullPath=path1+initialCommand;
-		if(checkCommandExist(fullPath) == 1){
-			//cout<<fullPath;
-			cmdExecFuntion(fullPath);
-			//need to above line and write a program to execute cmdExecution.cpp
+		int searchResult = searchStr(initialCommand);
+		cout<<initialCommand;
+		if(searchResult == 0){
+			string setVariable = initialCommand+setter;
+			//cout<< setVariable;
+			string aliasExclusionCommad = readEnvFile(setVariable);
+			//cout<<aliasExclusionCommad;
+			aliasCheck(aliasExclusionCommad);
 			setPromptString();
+
 		}
 		else{
-			string path2="/usr/bin/";
-			string fullPath1=path2+initialCommand;
-			if(checkCommandExist(fullPath1) == 1){
-				cmdExecFuntion(fullPath1);
-				setPromptString();
-			}
-			else{
-				cout << "command not exist"<<endl;
-				setPromptString();
-			}
+			aliasCheck(initialCommand);
+			setPromptString();
 		}
+
 	}
 }
 

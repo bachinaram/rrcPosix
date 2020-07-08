@@ -1,7 +1,7 @@
 HOME=/scratch/
 HOSTNAME=slc14xzg
 HOSTNAME=3456
-USERS=unknown
+USERS=unknow
 USER=RAM
 myName=yourname
 HISTSIZE=40
